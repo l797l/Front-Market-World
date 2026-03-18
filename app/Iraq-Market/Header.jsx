@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { dataDinar, dataGold } from "./data-api";
+import { dataDinar, dataGold , dataSilver} from "./data-api";
 import { PriceHeader } from "./StructureData";
 
 export default function Header() {
@@ -8,23 +8,27 @@ export default function Header() {
   const [priceGold21, setpriceGold21] = useState(null);
   const [priceGold18, setpriceGold18] = useState(null);
   const [priceGold24, setpriceGold24] = useState(null);
+  const [priceSilver, setpriceSilver] = useState(null);
+
 
   useEffect(() => {
     const giveData = async () => {
-      const priceDinar = await dataDinar();
+      const priceDinarr = await dataDinar();
       const priceGold = await dataGold();
       const priceGold21 = priceGold.price.filter((item) => item.karat == 21);
       const priceGold18 = priceGold.price.filter((item) => item.karat == 18);
       const priceGold24 = priceGold.price.filter((item) => item.karat == 24);
+      const priceSilverr = await dataSilver();
 
-      setpriceDinar(priceDinar);
+      setpriceDinar(priceDinarr);
       setpriceGold21(priceGold21);
       setpriceGold18(priceGold18);
       setpriceGold24(priceGold24);
+      setpriceSilver(priceSilverr);
     };
     giveData();
   }, []);
-  if (!priceDinar && !priceGold18 && !priceGold21 && !priceGold24) {
+  if (!priceDinar && !priceGold18 && !priceGold21 && !priceGold24 && !priceSilver) {
     return <div>Loading...</div>;
   }
   return (
@@ -45,21 +49,28 @@ export default function Header() {
           priceNow={priceGold18[0].buyPricePerGram}
           priceOld={priceGold18[1].buyPricePerGram}
           namePrice={"Gold Karat 18"}
-          type={"Market"}
+          type={"Stock"}
         />
 
         <PriceHeader
           priceNow={priceGold21[0].buyPricePerGram}
           priceOld={priceGold21[1].buyPricePerGram}
           namePrice={"Gold Karat 21"}
-          type={"Market"}
+          type={"Stock"}
         />
 
         <PriceHeader
           priceNow={priceGold24[0].buyPricePerGram}
           priceOld={priceGold24[1].buyPricePerGram}
           namePrice={"Gold Karat 24"}
-          type={"Market"}
+          type={"Stock"}
+        />
+      
+           <PriceHeader
+          priceNow={priceSilver.price[0].buyPriceGram}
+          priceOld={priceSilver.price[1].buyPriceGram}
+          namePrice={"Silver"}
+          type={"Stock"}
         />
       </div>
     </div>

@@ -3,6 +3,7 @@ import api from '../api/axios';
 
 let dinarjson = null;
 let goldjson = null;
+let silverjson = null;
 
 
 export  const dataDinar = async () => {
@@ -32,5 +33,20 @@ export  const dataGold = async () => {
                 console.error('Error fetching data:', error);
             }
         };
+
+        export  const dataSilver = async () => {
+
+    if (silverjson) {
+        return silverjson;
+    }
+        try {
+                const response = await api.get('PriceSilverIQ');
+                    silverjson = response.data;
+                    return silverjson;
+            }    catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
 
 
