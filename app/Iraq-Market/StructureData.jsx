@@ -50,7 +50,7 @@ export const CardPriceSellAndBuy = ({
   const getStatus = (now, old) => {
     if (now > old) return { color: "text-[#00C805]", icon: "▲" };
     if (now < old) return { color: "text-[#FF3B30]", icon: "▼" };
-    return { color: "text-white", icon: "—" };
+    return { color: "text-white", icon: "" };
   };
 
   const buyStatus = getStatus(priceBuyNow, priceBuyOld);

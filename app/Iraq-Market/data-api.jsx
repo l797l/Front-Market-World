@@ -1,10 +1,12 @@
-import {api,apiWorld} from "../api/axios";
+import { api, apiWorld } from "../api/axios";
 
 let dinarjson = null;
 let goldjson = null;
 let silverjson = null;
-let usdjson = null;
-
+let eurjson = null;
+let irrjson = null;
+let aedjson = null;
+let TRY = null;
 
 export const dataDinar = async () => {
   if (dinarjson) {
@@ -45,18 +47,55 @@ export const dataSilver = async () => {
   }
 };
 
+export const dataEur = async () => {
+  if (eurjson) {
+    return eurjson;
+  }
+  try {
+    const response = await apiWorld.get("EUR-USD/spot");
+    eurjson = response.data;
+    return eurjson;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+};
 
+export const dataIrr = async () => {
+  if (irrjson) {
+    return irrjson;
+  }
+  try {
+    const response = await apiWorld.get("IRR-USD/spot");
+    irrjson = response.data;
+    return irrjson;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+};
+export const dataAed = async () => {
+  if (aedjson) {
+    return aedjson;
+  }
+  try {
+    const response = await apiWorld.get("AED-USD/spot");
+    aedjson = response.data;
 
-  export  const dataForex = async () => {
+    return aedjson;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+};
 
-    if (usdjson) {
-        return usdjson;
-    }
-        try {
-                const response = await apiWorld.get('EUR-USD/spot');
-                    usdjson = response.data;
-                    return usdjson;
-            }    catch (error) {
-                console.error('Error fetching data:', error);
-            }
-        };
+export const dataTRY = async () => {
+  if (TRY) {
+    return TRY;
+  }
+  try {
+    const response = await apiWorld.get("TRY-USD/spot");
+    TRY = response.data;
+
+    return TRY;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+};
