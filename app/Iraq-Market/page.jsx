@@ -9,7 +9,11 @@ import {
   dataAed,
   dataTRY,
 } from "./data-api";
-import { CardPriceSellAndBuy, TitleMenuePrice } from "./StructureData";
+import {
+  CardPrice,
+  CardPriceSellAndBuy,
+  TitleMenuePrice,
+} from "./StructureData";
 
 export default function IraqMarket() {
   const [priceDinar, setpriceDinar] = useState(null);
@@ -60,7 +64,15 @@ export default function IraqMarket() {
   }
   return (
     <div className=" pl-5 pr-5 lg:pl-25 lg:pr-25 mt-10  flex lg:flex-row flex-col gap-20 ">
-      <div className="flex flex-col lg:w-[45%] gap-5 order-2 lg:order-1">
+      <div className="flex flex-col lg:w-[45%] gap-5 ">
+        <CardPrice
+          priceBuyNow={priceDinar.price[0].buyPrice}
+          priceBuyOld={priceDinar.price[1].buyPrice}
+          priceSellNow={priceDinar.price[0].sellPrice}
+          priceSellOld={priceDinar.price[1].sellPrice}
+          img={"/img-flag/IQ-Flag.svg"}
+          name={"USD/IQD"}
+        />
         <div className="w-full  max-w-200 ">
           <TitleMenuePrice
             img={"/img-flag/IQ-Flag.svg"}
@@ -201,8 +213,8 @@ export default function IraqMarket() {
         </div>
       </div>
 
-      <div className="flex lg:w-[45%] justify-center  order-1 flex-col gap-5">
-         <div className="w-full max-w-200 ">
+      <div className="flex lg:w-[45%] justify-center   flex-col gap-5">
+        <div className="w-full max-w-200 ">
           <TitleMenuePrice
             img={"/img-flag/IQ-Flag.svg"}
             title={"Dinar exchange rate at Bank"}
@@ -240,53 +252,37 @@ export default function IraqMarket() {
             <CardPriceSellAndBuy
               priceBuyNow={(priceDinarBankBuy * priceIrr).toFixed(0)}
               priceBuyOld={(priceDinarBankBuy * priceIrr).toFixed(0)}
-              priceSellNow={(priceDinarBankSell * priceIrr).toFixed(
-                0,
-              )}
-              priceSellOld={(priceDinarBankSell * priceIrr).toFixed(
-                0,
-              )}
+              priceSellNow={(priceDinarBankSell * priceIrr).toFixed(0)}
+              priceSellOld={(priceDinarBankSell * priceIrr).toFixed(0)}
               name={`1M Iran rial (IRR)`}
               img={"/img-flag/IR-Flag.svg"}
             />
             <CardPriceSellAndBuy
               priceBuyNow={(priceDinarBankBuy * priceIrt).toFixed(0)}
               priceBuyOld={(priceDinarBankBuy * priceIrt).toFixed(0)}
-              priceSellNow={(priceDinarBankSell * priceIrt).toFixed(
-                0,
-              )}
-              priceSellOld={(priceDinarBankSell * priceIrt).toFixed(
-                0,
-              )}
+              priceSellNow={(priceDinarBankSell * priceIrt).toFixed(0)}
+              priceSellOld={(priceDinarBankSell * priceIrt).toFixed(0)}
               name={`1M Iran toman (IRT) `}
               img={"/img-flag/IR-Flag.svg"}
             />
             <CardPriceSellAndBuy
               priceBuyNow={(priceDinarBankBuy * priceAed).toFixed(2)}
               priceBuyOld={(priceDinarBankBuy * priceAed).toFixed(2)}
-              priceSellNow={(priceDinarBankSell * priceAed).toFixed(
-                2,
-              )}
-              priceSellOld={(priceDinarBankSell * priceAed).toFixed(
-                2,
-              )}
+              priceSellNow={(priceDinarBankSell * priceAed).toFixed(2)}
+              priceSellOld={(priceDinarBankSell * priceAed).toFixed(2)}
               name={`UAE dirham (AED) `}
               img={"/img-flag/UAE-Flag.svg"}
             />
             <CardPriceSellAndBuy
               priceBuyNow={(priceDinarBankBuy * priceTRY).toFixed(2)}
               priceBuyOld={(priceDinarBankBuy * priceTRY).toFixed(2)}
-              priceSellNow={(priceDinarBankSell * priceTRY).toFixed(
-                2,
-              )}
-              priceSellOld={(priceDinarBankSell * priceTRY).toFixed(
-                2,
-              )}
+              priceSellNow={(priceDinarBankSell * priceTRY).toFixed(2)}
+              priceSellOld={(priceDinarBankSell * priceTRY).toFixed(2)}
               name={`Turkey lira (TRY) `}
               img={"/img-flag/TR-Flag.svg"}
             />
           </div>
-          </div>
+        </div>
         <div className="w-full max-w-200 ">
           <TitleMenuePrice
             img={"/img-flag/IQ-Flag.svg"}

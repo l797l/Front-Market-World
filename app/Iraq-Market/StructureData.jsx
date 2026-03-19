@@ -59,7 +59,11 @@ export const CardPriceSellAndBuy = ({
   return (
     <div className="flex flex-row w-full justify-between items-center bg-[#111111] p-3 rounded-lg border border-[#1A1A1A] hover:bg-[#161616] transition-colors mb-2 cursor-pointer">
       <div className="flex items-center gap-3 flex-1">
-        <img src={img} alt={name} className="w-5 h-5 sm:w-6 sm:h-6 object-contain" />
+        <img
+          src={img}
+          alt={name}
+          className="w-5 h-5 sm:w-6 sm:h-6 object-contain"
+        />
         <p className="text-[13px] sm:text-[15px] font-bold text-white tracking-tight">
           {name}
         </p>
@@ -67,9 +71,13 @@ export const CardPriceSellAndBuy = ({
 
       <div className="flex flex-col items-center flex-1">
         <span className="text-[10px] text-[#666666] uppercase">BUY</span>
-        <p className={`text-[12px]  sm:text-[16px] font-mono font-semibold ${buyStatus.color}`}>
+        <p
+          className={`text-[12px]  sm:text-[16px] font-mono font-semibold ${buyStatus.color}`}
+        >
           {priceBuyNow.toLocaleString()}
-          <span className="text-[8px] sm:text-[10px] ml-1">{buyStatus.icon}</span>
+          <span className="text-[8px] sm:text-[10px] ml-1">
+            {buyStatus.icon}
+          </span>
         </p>
       </div>
 
@@ -79,7 +87,9 @@ export const CardPriceSellAndBuy = ({
           className={`text-[12px]  sm:text-[16px] font-mono font-semibold ${sellStatus.color}`}
         >
           {priceSellNow.toLocaleString()}
-          <span className="text-[8px] sm:text-[10px] ml-1">{sellStatus.icon}</span>
+          <span className="text-[8px] sm:text-[10px] ml-1">
+            {sellStatus.icon}
+          </span>
         </p>
       </div>
     </div>
@@ -88,10 +98,53 @@ export const CardPriceSellAndBuy = ({
 
 export const TitleMenuePrice = ({ title, className, img }) => {
   return (
-    <div className={`${className} flex flex-row gap-3 mb-2`}>
+    <div className={`${className} flex flex-row gap-3 mb-2 bg-[#0F0F0F]`}>
       <img src={img} alt={"none"} className="w-8 h-8 object-contain " />
 
-      <h5 className="text-[18] sm:text-[22px] text-500 text-white font-black ">{title}</h5>
+      <h5 className="text-[15px] sm:text-[22px] text-500 text-white font-black underline decoration-solid decoration-1 hover:no-underline cursor-pointer  ">
+        {title}
+      </h5>
+    </div>
+  );
+};
+
+export const CardPrice = ({
+  name,
+  priceBuyNow,
+  priceBuyOld,
+  priceSellNow,
+  priceSellOld,
+  img,
+}) => {
+  const getStatus = (now, old) => {
+    if (now > old) return { color: "text-[#00C805]", icon: "▲" };
+    if (now < old) return { color: "text-[#FF3B30]", icon: "▼" };
+    return { color: "text-white", icon: "" };
+  };
+  const priceDifference = priceBuyNow.toFixed(0) - priceBuyOld.toFixed(0);
+
+  const priceDifferenceStatus = getStatus(priceDifference, 0);
+  const buyStatus = getStatus(priceBuyNow, priceBuyOld);
+  return (
+    <div className="bg-[#0F0F0F] flex flex-col p-5">
+      <div className="flex flex-row gap-3">
+        <img src={img} alt={"none"} className="w-8 h-8 object-contain " />
+
+        <h5 className="text-[15px] sm:text-[22px] text-500 text-white font-black underline decoration-solid decoration-1 hover:no-underline cursor-pointer  ">
+          {name}
+        </h5>
+      </div>
+      <p className="text-[16px]">Live exchange rate for US Dollar to Iraqi Dinar at Black Market, Thursday, 19.03.2026</p>
+      <h2 className={`${buyStatus.color} text-[64px] font-black`}>
+        {priceBuyNow}
+        <span className="text-[34px] "> {buyStatus.icon}</span>{" "}
+      </h2>
+      <p className="text-[16px]">
+        
+        Sell Price: <span className="font-black text-[18px]">{priceSellNow} </span>={" "}
+        <span className={`${priceDifferenceStatus.color} text-[18px] font-black`}  >{priceDifference } <span className="text-[14px]"> {priceDifferenceStatus.icon}</span></span>{" "}
+        Compared to yesterday's last price
+      </p>
     </div>
   );
 };
