@@ -33,11 +33,11 @@ export default function Header() {
   }
   return (
     <div>
-        <div className=" h-10 w-full bg-[#0F0F0F] p-4 flex flex-row justify-start items-center pl-10 pr-10 fixed top-0 left-0 z-50">
+        <div className=" h-10 w-full bg-[#0F0F0F] p-4 flex flex-row justify-start items-center pl-25 pr-25 fixed top-0 left-0 z-50">
             <h1>NAHRAIN MARKET</h1>
         
         </div>
-      <div className="mt-10 h-20 w-full bg-[#0F0F0F] p-4 flex flex-row justify-start items-center pl-10 pr-10">
+      <div className="mt-10 h-20 w-full bg-[#0F0F0F] p-4  flex-row justify-start items-center pl-25 pr-25 hidden sm:flex">
         <PriceHeader
           priceNow={priceDinar.price[0].buyPrice}
           priceOld={priceDinar.price[1].buyPrice}
@@ -45,7 +45,7 @@ export default function Header() {
           type={"Market"}
         />
         
-        <PriceHeader
+        <PriceHeader className="hidden lg:block"
           priceNow={priceGold18[0].buyPricePerGram}
           priceOld={priceGold18[1].buyPricePerGram}
           namePrice={"Gold Karat 18"}

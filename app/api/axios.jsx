@@ -1,7 +1,10 @@
 import axios from 'axios';
 
-const api = axios.create({
+export const api = axios.create({
   baseURL: 'https://apiiraqmarket.runasp.net/api/marketiraqi/'
 });
 
-export default api;
+export const apiWorld = axios.create({
+  baseURL: 'https://api.coinbase.com/v2/prices/'
+});
+

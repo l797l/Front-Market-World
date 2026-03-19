@@ -1,5 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
-export const PriceHeader = ({ priceNow, priceOld, namePrice, type }) => {
+export const PriceHeader = ({
+  priceNow,
+  priceOld,
+  namePrice,
+  type,
+  className,
+}) => {
   const isUp = priceNow > priceOld;
   const isDown = priceNow < priceOld;
 
@@ -8,7 +14,9 @@ export const PriceHeader = ({ priceNow, priceOld, namePrice, type }) => {
   if (isDown) statusColor = "text-[#FF3B30]";
 
   return (
-    <div className="flex flex-col items-start justify-center gap-1 mr-12 group transition-all duration-300">
+    <div
+      className={`flex flex-col items-start justify-center gap-1 mr-12 group transition-all duration-300 ${className}`}
+    >
       <span className="text-[12px] font-medium text-[#888888] uppercase tracking-wider">
         {namePrice}
       </span>
@@ -51,29 +59,39 @@ export const CardPriceSellAndBuy = ({
   return (
     <div className="flex flex-row w-full justify-between items-center bg-[#111111] p-3 rounded-lg border border-[#1A1A1A] hover:bg-[#161616] transition-colors mb-2 cursor-pointer">
       <div className="flex items-center gap-3 flex-1">
-        <img src={img} alt={name} className="w-6 h-6 object-contain" />
-        <p className="text-[15px] font-bold text-white tracking-tight">
+        <img src={img} alt={name} className="w-5 h-5 sm:w-6 sm:h-6 object-contain" />
+        <p className="text-[13px] sm:text-[15px] font-bold text-white tracking-tight">
           {name}
         </p>
       </div>
 
       <div className="flex flex-col items-center flex-1">
         <span className="text-[10px] text-[#666666] uppercase">BUY</span>
-        <p className={`text-[16px] font-mono font-semibold ${buyStatus.color}`}>
+        <p className={`text-[12px]  sm:text-[16px] font-mono font-semibold ${buyStatus.color}`}>
           {priceBuyNow.toLocaleString()}
-          <span className="text-[10px] ml-1">{buyStatus.icon}</span>
+          <span className="text-[8px] sm:text-[10px] ml-1">{buyStatus.icon}</span>
         </p>
       </div>
 
       <div className="flex flex-col items-center flex-1">
         <span className="text-[10px] text-[#666666] uppercase">SELL</span>
         <p
-          className={`text-[16px] font-mono font-semibold ${sellStatus.color}`}
+          className={`text-[12px]  sm:text-[16px] font-mono font-semibold ${sellStatus.color}`}
         >
           {priceSellNow.toLocaleString()}
-          <span className="text-[10px] ml-1">{sellStatus.icon}</span>
+          <span className="text-[8px] sm:text-[10px] ml-1">{sellStatus.icon}</span>
         </p>
       </div>
+    </div>
+  );
+};
+
+export const TitleMenuePrice = ({ title, className, img }) => {
+  return (
+    <div className={`${className} flex flex-row gap-3 mb-2`}>
+      <img src={img} alt={"none"} className="w-8 h-8 object-contain " />
+
+      <h5 className="text-[18] sm:text-[22px] text-500 text-white font-black ">{title}</h5>
     </div>
   );
 };
