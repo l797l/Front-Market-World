@@ -106,13 +106,13 @@ export default function IraqMarket() {
 
             <CardPriceSellAndBuy
               priceBuyNow={Number(
-                (priceGold24[0].buyPricePerGram * 4.25).toFixed(0),
+                (priceGold21[0].buyPricePerGram * 5)).toFixed(0),
               )}
-              priceBuyOld={(priceGold24[1].buyPricePerGram * 4.25).toFixed(0)}
+              priceBuyOld={(priceGold21[1].buyPricePerGram * 5).toFixed(0)}
               priceSellNow={Number(
-                (priceGold24[0].sellPricePerGram * 4.25).toFixed(0),
+                (priceGold21[0].sellPricePerGram * 5).toFixed(0),
               )}
-              priceSellOld={(priceGold24[1].sellPricePerGram * 4.25).toFixed(0)}
+              priceSellOld={(priceGold21[1].sellPricePerGram * 5).toFixed(0)}
               name={"Mithqal"}
               img={"/img-flag/Gold-Ounca.svg"}
             />
