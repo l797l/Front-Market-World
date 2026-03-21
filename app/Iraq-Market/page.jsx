@@ -67,9 +67,9 @@ export default function IraqMarket() {
       <div className="flex flex-col lg:w-[45%] gap-5 ">
         <CardPrice
           priceBuyNow={priceDinar.price[0].buyPrice}
-          priceBuyOld={priceDinar.price[1].buyPrice}
+          priceBuyOld={priceDinar.price[48].buyPrice}
           priceSellNow={priceDinar.price[0].sellPrice}
-          priceSellOld={priceDinar.price[1].sellPrice}
+          priceSellOld={priceDinar.price[48].sellPrice}
           img={"/img-flag/IQ-Flag.svg"}
           name={"USD/IQD"}
         />
@@ -106,7 +106,7 @@ export default function IraqMarket() {
 
             <CardPriceSellAndBuy
               priceBuyNow={Number(
-                (priceGold21[0].buyPricePerGram * 5)).toFixed(0),
+                (priceGold21[0].buyPricePerGram * 5+(5)).toFixed(0),
               )}
               priceBuyOld={(priceGold21[1].buyPricePerGram * 5).toFixed(0)}
               priceSellNow={Number(
